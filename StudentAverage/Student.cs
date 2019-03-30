@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+
 
 namespace StudentAverage
 {
@@ -8,8 +10,19 @@ namespace StudentAverage
 
         public int[] Scores { get; set; }
 
-        public int? GetAverage()
+        public decimal GetAverage()
         {
+            decimal sum = 0;
+            for (int i = 0; i < Scores.Length; i++)
+            {
+                sum += Scores[i];
+            }
+            
+            decimal average = sum / Scores.Length;
+            decimal averageRound = Math.Round(average, 0, MidpointRounding.AwayFromZero);
+            
+            
+            return averageRound;
         }
     }
 }
